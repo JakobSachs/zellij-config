@@ -31,8 +31,8 @@ keybinds clear-defaults=true {
     tab {
         bind "Ctrl t" { SwitchToMode "Normal"; }
         bind "r" { SwitchToMode "RenameTab"; TabNameInput 0; }
-        bind "h" "Left" "Up" "k" { GoToPreviousTab; }
-        bind "l" "Right" "Down" "j" { GoToNextTab; }
+        // bind "h" "Left" "Up" "k" { GoToPreviousTab; }
+        // bind "l" "Right" "Down" "j" { GoToNextTab; }
         bind "n" { NewTab; SwitchToMode "Normal"; }
         bind "x" { CloseTab; SwitchToMode "Normal"; }
         bind "b" { BreakPane; SwitchToMode "Normal"; }
@@ -58,42 +58,34 @@ keybinds clear-defaults=true {
         bind "Esc" { UndoRenameTab; SwitchToMode "Tab"; }
     }
 
-    shared_except "normal" "locked" {
+    shared {
+      bind "Super 1" { GoToTab 1;}
+      bind "Super 2" { GoToTab 2;}
+      bind "Super 3" { GoToTab 3;}
+      bind "Super 4" { GoToTab 4;}
+    }
+
+    shared_except "normal" {
         bind "Enter" "Esc" { SwitchToMode "Normal"; }
     }
-    shared_except "pane" "locked" {
+    shared_except "pane" {
         bind "Ctrl p" { SwitchToMode "Pane"; }
     }
-    shared_except "resize" "locked" {
+    shared_except "resize" {
         bind "Ctrl n" { SwitchToMode "Resize"; }
     }
-    shared_except "tab" "locked" {
+    shared_except "tab" {
         bind "Ctrl t" { SwitchToMode "Tab"; }
     }
-    shared_except "move" "locked" {
+    shared_except "move" {
         bind "Ctrl h" { SwitchToMode "Move"; }
     }
-    shared_except "scroll" "locked" {
+    shared_except "scroll" {
         bind "Ctrl s" { SwitchToMode "Scroll"; }
     }
 
-    session {
-        bind "Ctrl x" { SwitchToMode "Normal"; }
-        bind "x" { Detach;}
-    }
-    
-    shared_except "session" "locked" {
-        bind "Ctrl x" { SwitchToMode "Session"; }
-    }
-
 }
 
-plugins {
-    tab-bar { path "tab-bar"; }
-    status-bar { path "status-bar"; }
-    strider { path "strider"; }
-    compact-bar { path "compact-bar"; }
-}
 
 
 themes {
